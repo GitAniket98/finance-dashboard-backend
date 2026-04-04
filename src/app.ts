@@ -3,6 +3,8 @@ import cors from "cors"
 import helmet from "helmet"
 import rateLimit from "express-rate-limit"
 import authRoutes from "./routes/auth.routes"
+import { Request, Response, NextFunction } from "express"
+import ApiError from "./utils/ApiError"
 import { success } from "zod"
 
 const app = express()
@@ -36,5 +38,27 @@ app.get("/health", (req, res) => {
 
 // routes
 app.use("/auth", authRoutes)
+
+// 404 handler
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ success: false, message: "route not found" })
+})
+
+// error handler
+app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof ApiError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+      errors: err.errors,
+    })
+  }
+
+  console.error(err)
+  return res.status(500).json({
+    success: false,
+    message: "internal server error",
+  })
+})
 
 export default app
