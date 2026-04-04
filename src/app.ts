@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import rateLimit from "express-rate-limit"
+import authRoutes from "./routes/auth.routes"
 import { success } from "zod"
 
 const app = express()
@@ -32,5 +33,8 @@ app.use(express.urlencoded({extended: true, limit : "16kb"}))
 app.get("/health", (req, res) => {
     res.json({success : true, message : "server is live and running"})
 })
+
+// routes
+app.use("/auth", authRoutes)
 
 export default app
