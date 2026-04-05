@@ -7,6 +7,7 @@ import { Request, Response, NextFunction } from "express"
 import ApiError from "./utils/ApiError"
 import userRoutes from "./routes/user.routes"
 import recordRoutes from "./routes/record.routes"
+import dashboardRoutes from "./routes/dashboard.routes"
 import { success } from "zod"
 
 const app = express()
@@ -42,6 +43,7 @@ app.get("/health", (req, res) => {
 app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
 app.use("/records", recordRoutes)
+app.use("/dashboard", dashboardRoutes)
 
 // 404 handler
 app.use((req: Request, res: Response) => {
