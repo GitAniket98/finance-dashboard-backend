@@ -3,7 +3,11 @@ import jwt from "jsonwebtoken"
 import ApiError from "../utils/ApiError"
 import { AuthenticatedUser } from "../models/user.model"
 
-const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
+interface AuthRequest extends Request {
+  user?: AuthenticatedUser
+}
+
+const verifyJWT = (req: AuthRequest, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {

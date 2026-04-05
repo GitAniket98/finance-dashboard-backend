@@ -5,6 +5,7 @@ import rateLimit from "express-rate-limit"
 import authRoutes from "./routes/auth.routes"
 import { Request, Response, NextFunction } from "express"
 import ApiError from "./utils/ApiError"
+import userRoutes from "./routes/user.routes"
 import { success } from "zod"
 
 const app = express()
@@ -38,6 +39,7 @@ app.get("/health", (req, res) => {
 
 // routes
 app.use("/auth", authRoutes)
+app.use("/users", userRoutes)
 
 // 404 handler
 app.use((req: Request, res: Response) => {
