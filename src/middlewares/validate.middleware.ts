@@ -16,4 +16,18 @@ const validate = (schema: ZodType) => {
   }
 }
 
+export const validateQuery = (schema: ZodType) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const result = schema.safeParse(req.query)
+
+    if (!result.success) {
+      const errors = result.error.issues.map((e) => e.message)
+      return next(new ApiError(400, "invalid query parameters", errors))
+    }
+
+   ;(req as any).parsedQuery = result.data
+    next()
+  }
+}
+
 export default validate
