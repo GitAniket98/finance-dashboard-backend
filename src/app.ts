@@ -8,6 +8,7 @@ import ApiError from "./utils/ApiError"
 import userRoutes from "./routes/user.routes"
 import recordRoutes from "./routes/record.routes"
 import dashboardRoutes from "./routes/dashboard.routes"
+import { setupSwagger } from "./swagger"
 import { success } from "zod"
 
 const app = express()
@@ -44,6 +45,9 @@ app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
 app.use("/records", recordRoutes)
 app.use("/dashboard", dashboardRoutes)
+
+//swagger 
+setupSwagger(app)
 
 // 404 handler
 app.use((req: Request, res: Response) => {

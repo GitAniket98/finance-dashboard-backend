@@ -19,13 +19,13 @@ A backend REST API for a finance dashboard system. Supports role-based access co
 
 ## Project Structure
 
-src/
-├── controllers/ # Route handlers
-├── db/ # Database connection, migrations, seed
-├── middlewares/ # Auth, role guard, validation, rate limiting
-├── models/ # TypeScript interfaces
-├── routes/ # Express routers
-├── utils/ # ApiError, ApiResponse, asyncHandler
+src/  
+├── controllers/ # Route handlers  
+├── db/ # Database connection, migrations, seed  
+├── middlewares/ # Auth, role guard, validation, rate limiting  
+├── models/ # TypeScript interfaces  
+├── routes/ # Express routers  
+├── utils/ # ApiError, ApiResponse, asyncHandler  
 └── validators/ # Zod schemas
 
 ---
