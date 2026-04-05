@@ -1,3 +1,6 @@
+[![Deployment Status](https://img.shields.io/badge/Deployment-Live-success?style=for-the-badge&logo=railway)](https://finance-dashboard-backend-hu09.onrender.com/health)
+[![API Docs](https://img.shields.io/badge/API_Docs-Swagger-blue?style=for-the-badge&logo=swagger)](https://finance-dashboard-backend-hu09.onrender.com/api-docs)
+
 # Finance Dashboard Backend
 
 A backend REST API for a finance dashboard system. Supports role-based access control, financial record management, and summary-level analytics designed to serve a frontend dashboard.
