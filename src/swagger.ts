@@ -9,11 +9,15 @@ const swaggerDocument = {
     description: "REST API for a finance dashboard system with role-based access control",
   },
   servers: [
-    {
-      url: "http://localhost:8000",
-      description: "Local development server",
-    },
-  ],
+  {
+    url: process.env.NODE_ENV === "production" 
+      ? "https://finance-dashboard-backend-hu09.onrender.com"
+      : "http://localhost:8000",
+    description: process.env.NODE_ENV === "production"
+      ? "Production server"
+      : "Local development server",
+  },
+],
   components: {
     securitySchemes: {
       bearerAuth: {
